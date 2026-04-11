@@ -35,10 +35,9 @@ usermod -s /bin/zsh $TARGET_USER
 echo "[+] Moving configuration files..."
 
 mv -v "$WORK_DIR/setup/.zshrc" "$TARGET_HOME/"
-mv -v "$WORK_DIR/setup/.config" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.config/*" "$TARGET_HOME/.config"
 mv -v "$WORK_DIR/setup/.cache" "$TARGET_HOME/"
-mv -v "$WORK_DIR/setup/.local" "$TARGET_HOME/"
-mv -v "$WORK_DIR/setup/.ssh" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.local/*" "$TARGET_HOME/*"
 mv -v "$WORK_DIR/setup/.mozilla" "$TARGET_HOME/"
 mv -v "$WORK_DIR/setup/.zsh_history" "$TARGET_HOME/"
 
