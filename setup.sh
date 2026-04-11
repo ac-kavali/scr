@@ -8,11 +8,8 @@ TARGET_HOME="/home/$TARGET_USER"
 WORK_DIR="$TARGET_HOME/back"
 
 echo "[+] Starting setup for user: $TARGET_USER"
-
-echo "[+] Installing lsd"
-apt install -y lsd
-
-echo "[+] Installing cmatrix"
+echo "[+] Updating the system"
+apt update -y 
 
 # Create working directory
 echo "[+] Creating working directory at $WORK_DIR..."
@@ -68,6 +65,13 @@ apt install -y nautilus
 # Fix ownership (VERY IMPORTANT)
 echo "[+] Fixing ownership..."
 chown -R $TARGET_USER:$TARGET_USER $TARGET_HOME
+
+
+echo "[+] Installing cmatrix"
+apt install cmatrix
+
+echo "[+] Installing lsd"
+apt install -y lsd
 
 echo "[+] Moving your wallpaper to downloads"
 cp -a "$WORK_DIR/setup/rack.jpg" "$TARGET_HOME/Downloads"
