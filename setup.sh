@@ -34,7 +34,7 @@ usermod -s /bin/zsh $TARGET_USER
 # Move configuration files
 echo "[+] Moving configuration files..."
 apt install -y rsync
-mv -v /home/kali/setup/.zshrc /home/kali/
+mv -v /home/kali/back/setup/.zshrc /home/kali/
 mkdir /home/kali/.config 2>/dev/null
 rsync -a --delete /home/kali/back/setup/.config/ /home/kali/.config/
 mkdir /home/kali/.cache 2>/dev/null
