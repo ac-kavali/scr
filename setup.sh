@@ -33,29 +33,34 @@ echo "[+] Extracting archive..."
 tar -xf setup.tar.xz
 
 # Change shell to zsh
-echo "[+] Changing default shell to zsh for $TARGET_USER..."
 usermod -s /bin/zsh $TARGET_USER
-
+echo "[OK]Default shell changed successfully to zsh!"
 # Move configuration files
 echo "[+] Moving configuration files..."
 apt install -y rsync
 
 mv -v "$WORK_DIR/setup/.zshrc" "$TARGET_HOME/"
+echo "[OK] Zshrc configured successfly!"
 
 mkdir -p "$TARGET_HOME/.config"
 rsync -a --delete "$WORK_DIR/setup/.config/" "$TARGET_HOME/.config/"
+echo "[OK] Config file Sync Successfully!"
 
 mkdir -p "$TARGET_HOME/.cache"
 rsync -a --delete "$WORK_DIR/setup/.cache/" "$TARGET_HOME/.cache/"
+echo "[OK] Cache file Sync Successfully!"
 
 mkdir -p "$TARGET_HOME/.mozilla"
 cp -a "$WORK_DIR/setup/.mozilla/." "$TARGET_HOME/.mozilla/"
+echo "[OK] Firefox Sync Sucessfully!"
 
 rm -f "$TARGET_HOME/.zsh_history"
 mv -v "$WORK_DIR/setup/.zsh_history" "$TARGET_HOME/.zsh_history"
+echo "[OK] zsh_history Sync Successfuly!"
 
 mkdir -p "$TARGET_HOME/.local/share"
 cp -a "$WORK_DIR/setup/fonts" "$TARGET_HOME/.local/share/"
+echo "[OK] Jetbrains Nerd Font Added sucessfully"
 
 echo "Installing nautilus"
 apt install -y nautilus 
