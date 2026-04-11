@@ -34,15 +34,18 @@ usermod -s /bin/zsh $TARGET_USER
 # Move configuration files
 echo "[+] Moving configuration files..."
 apt install -y rsync
-mv -v "$WORK_DIR/setup/.zshrc" "$TARGET_HOME/"
+mv -v /home/kali/setup/.zshrc /home/kali/
 mkdir /home/kali/.config 2>/dev/null
-rsync -av /home/kali/back/setup/.config/ /home/kali/.config/
+rsync -a --delete /home/kali/back/setup/.config/ /home/kali/.config/
 mkdir /home/kali/.cache 2>/dev/null
-rsync -av /home/kali/back/setup/.cache/ /home/kali/.cache/
+rsync  -a --delete  /home/kali/back/setup/.cache/ /home/kali/.cache/
 mkdir /home/kali/.mozilla 2>/dev/null
 mv -v "$WORK_DIR/setup/.mozilla/*" "$TARGET_HOME/.mozilla/"
-mv -v "$WORK_DIR/setup/.zsh_history" "$TARGET_HOME/"
-mv /home/kali/back/setup/fonts /home/kali/.local/share
+rm -rf /home/kali/.zsh_history
+mv -v /home/kali/back/setup/.zsh_history /home/kali/.zsh_history
+mv -v /home/kali/back/setup/fonts /home/kali/.local/share
+
+
 
 # Fix ownership (VERY IMPORTANT)
 echo "[+] Fixing ownership..."
