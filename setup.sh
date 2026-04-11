@@ -16,7 +16,7 @@ apt install -y gdown
 # Download file using gdown
 echo "[+] Downloading setup archive..."
 cd /tmp
-gdown ak32a34vjfq3e3wr32
+gdown 1M8bGOM48YgPngRiUIPN3zgdwxX_cbeKv
 
 # Extract archive
 echo "[+] Extracting archive..."
