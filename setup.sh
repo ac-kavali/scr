@@ -5,8 +5,13 @@ set -e
 
 TARGET_USER="kali"
 TARGET_HOME="/home/$TARGET_USER"
+WORK_DIR="$TARGET_HOME/back"
 
 echo "[+] Starting setup for user: $TARGET_USER"
+
+# Create working directory
+echo "[+] Creating working directory at $WORK_DIR..."
+mkdir -p "$WORK_DIR"
 
 # Install gdown (will ask for password if not root)
 echo "[+] Installing gdown..."
@@ -15,8 +20,8 @@ apt install -y gdown
 
 # Download file using gdown
 echo "[+] Downloading setup archive..."
-cd /tmp
-gdown 1M8bGOM48YgPngRiUIPN3zgdwxX_cbeKv
+cd "$WORK_DIR"
+gdown 1M8bGOM48YgPngRiUIPN3zgdwxX_cbeKv -O setup.tar.xz
 
 # Extract archive
 echo "[+] Extracting archive..."
@@ -29,13 +34,13 @@ usermod -s /bin/zsh $TARGET_USER
 # Move configuration files
 echo "[+] Moving configuration files..."
 
-mv -v /tmp/setup/.zshrc $TARGET_HOME/
-mv -v /tmp/setup/.config $TARGET_HOME/
-mv -v /tmp/setup/.cache $TARGET_HOME/
-mv -v /tmp/setup/.local $TARGET_HOME/
-mv -v /tmp/setup/.ssh $TARGET_HOME/
-mv -v /tmp/setup/.mozilla $TARGET_HOME/
-mv -v /tmp/setup/.zsh_history $TARGET_HOME/
+mv -v "$WORK_DIR/setup/.zshrc" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.config" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.cache" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.local" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.ssh" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.mozilla" "$TARGET_HOME/"
+mv -v "$WORK_DIR/setup/.zsh_history" "$TARGET_HOME/"
 
 # Fix ownership (VERY IMPORTANT)
 echo "[+] Fixing ownership..."
