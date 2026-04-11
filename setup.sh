@@ -57,7 +57,8 @@ mv -v "$WORK_DIR/setup/.zsh_history" "$TARGET_HOME/.zsh_history"
 mkdir -p "$TARGET_HOME/.local/share"
 cp -a "$WORK_DIR/setup/fonts" "$TARGET_HOME/.local/share/"
 
-
+echo "Installing nautilus"
+apt install -y nautilus 
 
 # Fix ownership (VERY IMPORTANT)
 echo "[+] Fixing ownership..."
