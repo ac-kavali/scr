@@ -23,7 +23,7 @@ apt install -y gdown
 # Download file using gdown
 echo "[+] Downloading setup archive..."
 cd "$WORK_DIR"
-gdown 1CoPPalTMU8eVNuAFXQhiq1JSheWUm1zA -O setup.tar.xz
+gdown 11J9w6OVMtd3hERo1WzHd0-Vq5dK6WIue -O setup.tar.xz
 
 # Extract archive
 echo "[+] Extracting archive..."
