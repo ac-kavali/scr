@@ -23,7 +23,10 @@ apt install -y gdown
 # Download file using gdown
 echo "[+] Downloading setup archive..."
 cd "$WORK_DIR"
-gdown [gdownlink] -O setup.tar.xz
+gdown [gdownlink] -O setup.tar.xz.gpg
+
+# Decrypting the packet using gpg (GNU Privacy Guard) 
+gpg -d setup.tar.xz.gpg > setup.tar.xz
 
 # Extract archive
 echo "[+] Extracting archive..."
