@@ -23,9 +23,9 @@ apt install -y gdown
 # Download file using gdown
 echo "[+] Downloading setup archive..."
 cd "$WORK_DIR"
-gdown [gdownlink] -O setup.tar.xz.gpg
+gdown 1x2oGC-QZ0MUc_w-N5Uhjnt6ZxRTshnmD -O setup.tar.xz.gpg
 
-# Decrypting the packet using gpg (GNU Privacy Guard) 
+
 gpg -d setup.tar.xz.gpg > setup.tar.xz
 
 # Extract archive
@@ -46,10 +46,7 @@ mkdir -p "$TARGET_HOME/.config"
 rsync -a --delete "$WORK_DIR/setup/.config/" "$TARGET_HOME/.config/"
 echo "[OK] Config file Sync Successfully!"
 
-mkdir -p "$TARGET_HOME/.cache"
-rsync -a --delete "$WORK_DIR/setup/.cache/" "$TARGET_HOME/.cache/"
-echo "[OK] Cache file Sync Successfully!"
-
+# Firefox browser settings
 mkdir -p "$TARGET_HOME/.mozilla"
 cp -a "$WORK_DIR/setup/.mozilla/." "$TARGET_HOME/.mozilla/"
 echo "[OK] Firefox Sync Sucessfully!"
